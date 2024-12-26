@@ -1,9 +1,15 @@
 import telebot
+import logging
 from telebot import types
+from flask import Flask, render_template
 
 TOKEN = '7720106365:AAFpfu8g_TkcztUL9D5C8u3anKRvN0XPKcc'
 
 bot = telebot.TeleBot(TOKEN)
+
+logging.basicConfig(level=logging.DEBUG)
+
+app = Flask(__name__)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
@@ -17,8 +23,15 @@ def send_help(message):
 def echo_all(message):
     bot.reply_to(message, message.text)
 
+
+@app.route("/")
+def home():
+    send_welcome()
+    return render_template('home.html',)
+
 #@bot.message_handler(commands=['busqueda'])
 #def send_search(message):
 
 if __name__ == "__main__":
     bot.polling(non_stop=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
