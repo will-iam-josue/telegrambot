@@ -26,7 +26,7 @@ def echo_all(message):
 
 @app.route("/")
 def home():
-    bot.polling(non_stop=True)
+    
     return render_template('home.html',)
 
 #@bot.message_handler(commands=['busqueda'])
@@ -34,3 +34,4 @@ def home():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8000, debug=True)
+    bot.polling(non_stop=True)
