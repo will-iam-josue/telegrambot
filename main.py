@@ -26,12 +26,11 @@ def echo_all(message):
 
 @app.route("/")
 def home():
-    send_welcome()
+    bot.polling(non_stop=True)
     return render_template('home.html',)
 
 #@bot.message_handler(commands=['busqueda'])
 #def send_search(message):
 
 if __name__ == "__main__":
-    bot.polling(non_stop=True)
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
