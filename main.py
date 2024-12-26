@@ -17,10 +17,8 @@ def send_help(message):
 def echo_all(message):
     bot.reply_to(message, message.text)
 
-
-@bot.message_handler(commands=['busqueda'])
-
-
+#@bot.message_handler(commands=['busqueda'])
+#def send_search(message):
 
 if __name__ == "__main__":
     bot.polling(non_stop=True)
